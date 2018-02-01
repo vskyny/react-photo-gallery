@@ -15,7 +15,7 @@ function handleClick(){
 it('renders correctly with onClick', () => {
 	const options = {createNodeMock};
   const component = renderer.create(
-    <Gallery photos={photos} onClick={handleClick}/>,
+    <Gallery photos={photos} onClick={handleClick} grid />,
 		options
   );
   let tree = component.toJSON();

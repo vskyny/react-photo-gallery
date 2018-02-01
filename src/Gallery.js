@@ -43,7 +43,14 @@ class Gallery extends React.Component {
     // subtract 1 pixel because the browser may round up a pixel
     const width = this.state.containerWidth - 1;
     const { photos, columns, margin, onClick } = this.props;
-    const thumbs = computeSizes({ width, columns, margin, photos });
+    let thumbs;
+    console.log(this.props.grid);
+    if (this.props.grid) {
+      thumbs = computeSizes({ width, columns, margin, photos });
+    } else {
+      thumbs = photos;
+    }
+
     return (
       <div className="react-photo-gallery--gallery">
         <div ref={c => (this._gallery = c)}>

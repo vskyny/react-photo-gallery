@@ -380,11 +380,6 @@ var Gallery = function (_React$Component) {
       }
     }
   }, {
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate() {
-      return true;
-    }
-  }, {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
       window.removeEventListener('resize', this.handleResize, false);
@@ -425,7 +420,13 @@ var Gallery = function (_React$Component) {
           margin = _props2.margin,
           onClick = _props2.onClick;
 
-      var thumbs = computeSizes({ width: width, columns: columns, margin: margin, photos: photos });
+      var thumbs = void 0;
+      if (this.props.grid) {
+        thumbs = computeSizes({ width: width, columns: columns, margin: margin, photos: photos });
+      } else {
+        thumbs = photos;
+      }
+
       return React__default.createElement(
         'div',
         { className: 'react-photo-gallery--gallery' },
@@ -456,7 +457,8 @@ Gallery.propTypes = {
   onClick: PropTypes.func,
   columns: PropTypes.number,
   margin: PropTypes.number,
-  ImageComponent: PropTypes.func
+  ImageComponent: PropTypes.func,
+  grid: PropTypes.bool
 };
 
 Gallery.defaultProps = {

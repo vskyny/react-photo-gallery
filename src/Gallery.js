@@ -44,7 +44,6 @@ class Gallery extends React.Component {
     const width = this.state.containerWidth - 1;
     const { photos, columns, margin, onClick } = this.props;
     let thumbs;
-    console.log(this.props.grid);
     if (this.props.grid) {
       thumbs = computeSizes({ width, columns, margin, photos });
     } else {
@@ -79,6 +78,7 @@ Gallery.propTypes = {
   columns: PropTypes.number,
   margin: PropTypes.number,
   ImageComponent: PropTypes.func,
+  grid: PropTypes.bool,
 };
 
 Gallery.defaultProps = {
